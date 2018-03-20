@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<head>
+    <title>hls.js demo</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+    <div class="main-container">
+        <header>
+                <h3>hls.js Video Player Demo.</h3>
+        </header>
+
+        <video id="video" controls  class="videoCentered"></video><br>
+        <canvas id="bufferedCanvas" height="15" class="videoCentered" onclick="updateBufferedSeek(event);"></canvas><br><br>
+        <div class="center play_control" id='PlaybackControl'>
+                <div>
+                <button type="button" class="btn btn-sm btn-info" id="playPauseBtn" onclick="togglePlayVideo();">Pause</button>
+                <input type="number" placeholder="In secs" id='seekPos' onkeydown="if (window.event.keyCode == '13') {seekTo();}">
+                <button type="button" class="btn btn-sm btn-info" onclick="seekTo();">seek to </button>
+                </div>
+                <div id="volumeIcon" onclick="toggleMute();"></div>
+                <div title="Volume">
+                    
+                    <input id="volControl" class="slider slider_wrap" type="range" min="0" max="100" oninput="SetVolume(this.value)" onchange="SetVolume(this.value)" />
+                </div>
+                <div  onclick="requestFullScreen();" style="margin-left: 35px; cursor: pointer;" title="Full Screen"><span class="glyphicon glyphicon-fullscreen"></span></div>
+        </div>
+
+        <div id='QualityLevelControl' class="center quality_wrap" >
+            <h4> Quality Control </h4>
+            <div id="levelControl" style="display: inline; margin-left: 25px;"></div> 
+        </div>
+    </div>
+    <br><br>
+    <script src="hls.js"></script>
+    <script src="main.js"></script>
+</html>
